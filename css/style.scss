@@ -1,0 +1,175 @@
+@import "compass";
+@import url(https://fonts.googleapis.com/css?family=Abel);
+// font-family
+$baseFontFamily :"游ゴシック", YuGothic, "メイリオ",Verdana, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+
+// colors
+$baseColor: #f7f4f0;
+$subColor: #c2a889;
+$keyColor: #a78357;
+$accentColor:#7a6245;
+$fontColor: #4c4c4c;
+
+html{ font-size: 62.5%;}
+
+body{
+  color: $fontColor;
+  font-size: 1.4rem;
+  font-family:$baseFontFamily;
+  line-height:1.6;
+  letter-spacing: 0.1em; 
+  background-color: $baseColor;
+  margin:0;
+}
+
+
+/* Align
+------------------------------------------------------------*/
+.text-center {
+  text-align: center;
+}
+
+/* Layout
+------------------------------------------------------------*/
+.block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Font
+------------------------------------------------------------*/
+.abel {
+  font-family: 'Abel', sans-serif;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+/*content
+------------------------------------------------------------*/
+section {
+  padding: 30px 10px;
+  .container {
+    @extend .block-center;
+  }
+  h2 {
+    @extend .abel;
+    font-size: 3.2rem;
+    @extend .uppercase;
+  }
+}
+
+// contents
+#contents {
+  background-color: $baseColor;
+  .container {
+    @include display-flex;
+    justify-content: space-between;
+    @include flex-direction(column);    // スキルボックスを縦に並べる
+  }
+  h2 {
+    color: $fontColor;
+    margin-bottom: 40px;
+  }
+  .contents-box {
+    @include flex(1);
+    margin: 10px 0; 
+    background-color: #fff;
+    @include border-radius(4px);
+    @include box-sizing(border-box);
+  }
+  h3 {
+    @extend .abel;
+    @extend .uppercase;
+    color: #fff;
+    margin: 0px 0px 10px 0px;
+    padding: 10px 10px;
+    font-size: 2.4rem;
+    font-weight: bold;
+    background-color:$keyColor;
+    @include border-radius(4px);
+    @include box-sizing(border-box);
+  }
+  p{
+    padding: 10px 10px;
+    word-break: break-all;
+  }
+}
+
+footer {
+  background-color: $keyColor;
+  margin-top: 40px;
+  padding: 30px 10px;
+  text-align: center;
+  color: #FFF;
+  font-size: 1.5rem;
+  @extend .abel;
+  @extend .uppercase;
+  .container{
+    @extend .block-center;
+  a{
+     @include flex(1);
+     @include border-radius(4px);
+     @include box-sizing(border-box);
+     background-color:$baseColor;
+     color:$fontColor;
+     padding: 5px 0;
+     display: block;
+     margin: auto;
+     text-align: center;
+     text-decoration: none;
+     
+     &:hover{
+       background-color:$accentColor;
+       color:$baseColor;
+     }
+  }
+  }
+}
+
+
+/* top-photo
+------------------------------------------------------------*/
+//モバイル用
+@media (max-width: 768px){
+  img{
+    width:100%;
+  }
+  .top-photo{
+    overflow: hidden;
+    height: 250px;
+    margin:0;
+  }
+}
+
+//PC用
+@media (min-width: 769px){
+  img{
+    width:100%;
+  }
+  .top-photo{
+    overflow: hidden;
+    height: 500px;
+    margin:0;
+  }
+  #contents {
+    .container {
+      @include flex-direction(row);     // スキルボックスを横に並べる
+      justify-content: space-between;
+    }
+    .contents-box {
+      margin: 0 10px;                   // 左右にマージン
+    }
+  }
+  footer {
+  .container{
+  a{
+     width: (90%/3); 
+  }
+  }
+}
+
+}
+
+
